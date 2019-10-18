@@ -27,8 +27,8 @@ const ColorList = ({ colors, updateColors }) => {
       .put(`/api/colors/${colorToEdit.id}`, colorToEdit)
       .then(res => {
         console.log("EDIT", res);
-        setColorToEdit(res.data);
-        setColorToEdit({ color: "", code: { hex: "" } });
+        updateColors(res.data);
+        setEditing(colors);
       });
   };
 
@@ -37,7 +37,8 @@ const ColorList = ({ colors, updateColors }) => {
       .delete(`/api/colors/${color.id}`)
       .then(res => {
         console.log(res);
-        setColorToEdit(res.data);
+        updateColors(res.data);
+        setEditing(colors);
       })
       .catch(err => console.log(err.response));
   };
