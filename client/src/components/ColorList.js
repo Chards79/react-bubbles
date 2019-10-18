@@ -28,7 +28,7 @@ const ColorList = ({ colors, updateColors }) => {
         .then(res => {
           console.log("EDIT", res);
           colors.setEditing(res.data);
-          updateColors({});
+          updateColors({ color: "", code: { hex: "" } });
           colors.setColorToEdit(null);
         });
     } else {
@@ -37,7 +37,7 @@ const ColorList = ({ colors, updateColors }) => {
         .then(res => {
           console.log("POST", res);
           colors.setEditing(res.data)
-          updateColors({});
+          updateColors({ color: "", code: { hex: "" } });
         })
         .catch(err => console.log(err.response));
     }
